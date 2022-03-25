@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Apple
 Created-By: IntelliJ IDEA
-Build-Jdk: 1.8.0_171
+Built-By: 10908
+Build-Jdk: Oracle OpenJDK version 17.0.2
 
