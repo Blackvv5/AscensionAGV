@@ -1,201 +1,103 @@
 package com.itheima.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.itheima.domain.User;
-import com.itheima.domain.VO;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.ArrayList;
 
 @Controller
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UserController {
 
-    @RequestMapping(value="/quick23")
+    // 这里为什么是 8080？教程里的，我没改注释，这里只是注释
+    // 请求地址  http://localhostzhser/quick你确定，你的Java是运行中的？上海翱翔i后向好像是……
+
+//你确定怕rams是这么写的，老师这么教的欸，我看着觉得好奇怪，引号直接用逗号隔开各个参数？那我去百度一个
+
+    @RequestMapping(value="/api/coordinates",method = RequestMethod.GET,params = {"userid=1", "time=2022"})
     @ResponseBody
-    public void save23(String username, MultipartFile[] uploadFile) throws IOException {
-        System.out.println(username);
-        for (MultipartFile multipartFile : uploadFile) {
-            String originalFilename = multipartFile.getOriginalFilename();
-            multipartFile.transferTo(new File("C:\\upload\\"+originalFilename));
+    public ArrayList<User> test1() throws IOException {
+
+        ArrayList<User> users = new ArrayList<>();
+        User user1 = new User();
+        user1.name = "ZhangSan";
+        user1.age = 15;
+        users.add(user1);
+        return users;
+    }
+
+    @RequestMapping(value="/api/coordinates",method = RequestMethod.GET,params = {"userid=2","time=2023"})
+    @ResponseBody
+    public ArrayList<User> test2() throws IOException {
+
+        ArrayList<User> users = new ArrayList<User>();
+        User user1 = new User();
+        user1.name = "LiSi";
+        user1.age = 16;
+        users.add(user1);
+        return users;
+    }
+
+    @RequestMapping(value="/api/coordinates",method = RequestMethod.GET,params = {"userid=2","time=2024"})
+    @ResponseBody
+    public User controller1() throws IOException {
+
+        User user1 = new User();
+        user1.name = "LiSi";
+        user1.age = 16;
+        return user1;
+    }
+
+    @RequestMapping(value="/api/coordinates",method = RequestMethod.GET,params = {"userid=3","time=2025"})
+    @ResponseBody
+    public User controller2() throws IOException {
+
+        User user1 = new User();
+        user1.name = "ZhangSan";
+        user1.age = 26;
+        return user1;
+    }
+
+    @RequestMapping(value="/test",method = RequestMethod.GET)
+    @ResponseBody
+    public int controller3(int username,int age) throws IOException {
+        if(username == 15 && age == 15){
+            return 2;
+        }else if(username == 12 && age == 14){
+            return 3;
+        }else{
+            return 4;
         }
     }
 
-    @RequestMapping(value="/quick22")
-    @ResponseBody
-    public void save22(String username, MultipartFile uploadFile,MultipartFile uploadFile2) throws IOException {
-        System.out.println(username);
-        //获得上传文件的名称
-        String originalFilename = uploadFile.getOriginalFilename();
-        uploadFile.transferTo(new File("C:\\upload\\"+originalFilename));
-        String originalFilename2 = uploadFile2.getOriginalFilename();
-        uploadFile2.transferTo(new File("C:\\upload\\"+originalFilename2));
-    }
+     // ok
+//    今天晚上差不多就这样，然后我简单说说其他的（
+//    我先试一下 One dark 和你的背景会不会冲突
+//            好像不冲突，我感觉 one dark 好看一点？
+//
+//    然后我简单讲讲快捷键
+//    有两个很重要的快捷键（1）行删除（2）代码格式化，你自己可以设置一下快捷键，我分别设置的 CTRL+D，和 CTRL+L
+//
+//    然后你留意一下这个插件
+    //前两个不变，你把这一个，修改为，如果不满足上面两种，就返回 error
 
-    @RequestMapping(value="/quick21")
-    @ResponseBody
-    public void save21(@CookieValue(value = "JSESSIONID") String jsessionId) throws IOException {
-        System.out.println(jsessionId);
-    }
+//    @RequestMapping(value="/api/coordinates",method = RequestMethod.GET,params = {})
+//    @ResponseBody
+//    public String save4() throws IOException {
+//        return "error.";
+//    }
 
-    @RequestMapping(value="/quick20")
-    @ResponseBody
-    public void save20(@RequestHeader(value = "User-Agent",required = false) String user_agent) throws IOException {
-        System.out.println(user_agent);
-    }
-
-
-    @RequestMapping(value="/quick19")
-    @ResponseBody
-    public void save19(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
-        System.out.println(request);
-        System.out.println(response);
-        System.out.println(session);
-    }
-
-    @RequestMapping(value="/quick18")
-    @ResponseBody
-    public void save18(Date date) throws IOException {
-        System.out.println(date);
-    }
-
-    // localhost:8080/user/quick17/zhangsan
-    @RequestMapping(value="/quick17/{name}")
-    @ResponseBody
-    public void save17(@PathVariable(value="name") String username) throws IOException {
-        System.out.println(username);
-    }
-
-    @RequestMapping(value="/quick16")
-    @ResponseBody
-    public void save16(@RequestParam(value="name",required = false,defaultValue = "itcast") String username) throws IOException {
-        System.out.println(username);
-    }
-
-    @RequestMapping(value="/quick15")
-    @ResponseBody
-    public void save15(@RequestBody List<User> userList) throws IOException {
-        System.out.println(userList);
-    }
-
-    @RequestMapping(value="/quick14")
-    @ResponseBody
-    public void save14(VO vo) throws IOException {
-        System.out.println(vo);
-    }
+//    @RequestMapping(value="/api/coordinates",method = RequestMethod.GET,params = {"userid!=3","time!=2025"})
+//    @ResponseBody
+//    public String save5() throws IOException {
+//        return "error.";
+//    }
 
 
-    @RequestMapping(value="/quick13")
-    @ResponseBody
-    public void save13(String[] strs) throws IOException {
-        System.out.println(Arrays.asList(strs));
-    }
-
-    @RequestMapping(value="/quick12")
-    @ResponseBody
-    public void save12(User user) throws IOException {
-        System.out.println(user);
-    }
-
-    @RequestMapping(value="/quick11")
-    @ResponseBody
-    public void save11(String username,int age) throws IOException {
-        System.out.println(username);
-        System.out.println(age);
-    }
-
-    @RequestMapping(value="/quick10")
-    @ResponseBody
-    //期望SpringMVC自动将User转换成json格式的字符串
-    public User save10() throws IOException {
-        User user = new User();
-        user.setUsername("lisi2");
-        user.setAge(32);
-
-        return user;
-    }
-
-    @RequestMapping(value="/quick9")
-    @ResponseBody
-    public String save9() throws IOException {
-        User user = new User();
-        user.setUsername("lisi");
-        user.setAge(30);
-        //使用json的转换工具将对象转换成json格式字符串在返回
-        ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(user);
-
-        return json;
-    }
-
-    @RequestMapping(value="/quick8")
-    @ResponseBody
-    public String save8() throws IOException {
-        return "{\"username\":\"zhangsan\",\"age\":18}";
-    }
-
-    @RequestMapping(value="/quick7")
-    @ResponseBody  //告知SpringMVC框架 不进行视图跳转 直接进行数据响应
-    public String save7() throws IOException {
-        return "hello itheima";
-    }
-
-    @RequestMapping(value="/quick6")
-    public void save6(HttpServletResponse response) throws IOException {
-        response.getWriter().print("hello itcast");
-    }
-
-    @RequestMapping(value="/quick5")
-    public String save5(HttpServletRequest request){
-        request.setAttribute("username","酷丁鱼");
-        return "success";
-    }
-
-    @RequestMapping(value="/quick4")
-    public String save4(Model model){
-        model.addAttribute("username","博学谷");
-        return "success";
-    }
-
-    @RequestMapping(value="/quick3")
-    public ModelAndView save3(ModelAndView modelAndView){
-        modelAndView.addObject("username","itheima");
-        modelAndView.setViewName("success");
-        return modelAndView;
-    }
 
 
-    @RequestMapping(value="/quick2")
-    public ModelAndView save2(){
-        /*
-            Model:模型 作用封装数据
-            View：视图 作用展示数据
-         */
-        ModelAndView modelAndView = new ModelAndView();
-        //设置模型数据
-        modelAndView.addObject("username","itcast");
-        //设置视图名称
-        modelAndView.setViewName("success");
-
-        return modelAndView;
-    }
-
-    // 请求地址  http://localhost:8080/user/quick
-    @RequestMapping(value="/quick",method = RequestMethod.GET,params = {"username"})
-    public String save(){
-        System.out.println("Controller save running....");
-        return "success";
-    }
 
 }
