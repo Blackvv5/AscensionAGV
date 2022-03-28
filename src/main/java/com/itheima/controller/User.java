@@ -4,6 +4,7 @@ package com.itheima.controller;
  * @author 10908
  */
 public class User {
+
     public int getIp() {
         return ip;
     }
@@ -104,5 +105,25 @@ public class User {
     private String houseImageTime;
     private String stateTime;
     private String shotTime;
+
+
+    String name;
+    int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
 }
