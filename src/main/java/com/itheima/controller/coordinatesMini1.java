@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder(value = {"id"})
 public class coordinatesMini1 {
 
-    private int x;
+    private double x;
 
     public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
@@ -19,11 +19,11 @@ public class coordinatesMini1 {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
-    private int y;
+    private double y;
 
     public String getTime() {
         return time;

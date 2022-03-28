@@ -11,20 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="69ead0dc-7c1f-4d9a-a75e-df64894db1b5" name="变更" comment="上传">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itheima/controller/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itheima/controller/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itheima/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itheima/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itheima/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itheima/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/itheima/controller/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/itheima/controller/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/itheima/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/itheima/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/itheima/converter/DateConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/itheima/converter/DateConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/itheima/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/itheima/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/itheima/domain/VO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/itheima/domain/VO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/converter/DateConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/converter/DateConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/domain/VO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/domain/VO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/form.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

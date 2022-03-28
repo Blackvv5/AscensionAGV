@@ -34,7 +34,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/coordinates", method = RequestMethod.GET)
     @ResponseBody
-    public Returning coordinatesAgv(int userid, int x, int y, int ip) throws IOException {
+    public Returning coordinatesAgv(int userid, double x, double y, int ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();

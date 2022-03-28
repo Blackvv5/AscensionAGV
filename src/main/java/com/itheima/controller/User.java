@@ -13,19 +13,19 @@ public class User {
         this.ip = ip;
     }
 
-    public int getX() {
+    public double getX() {
         return X;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         X = x;
     }
 
-    public int getY() {
+    public double getY() {
         return Y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         Y = y;
     }
 
@@ -62,8 +62,8 @@ public class User {
     }
 
     private int ip;
-    private int X;
-    private int Y;
+    private double X;
+    private double Y;
     private int id;
     private int houseImageEncoded;
     private int state;
