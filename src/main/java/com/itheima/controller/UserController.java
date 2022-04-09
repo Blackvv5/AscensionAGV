@@ -4,21 +4,79 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 
 /**
  * @author 10908
  */
 @Controller
-
+@ResponseBody
 public class UserController {
+
+    @RequestMapping
+    public String test2() throws IOException{
+
+        return "success";
+        }
+
+
+    @RequestMapping(value = "/test1", method = RequestMethod.GET)
+    @ResponseBody
+    public String test1() throws IOException {
+        File oldName = new File("F:\\GithubRepo\\AscensionAGV\\src\\main\\java\\com\\itheima\\controller\\1.jpg");
+        File newName = new File("F:\\GithubRepo\\AscensionAGV\\src\\main\\webapp\\img\\1.jpg");
+        if(newName.exists()){
+            newName.delete();
+        }
+        //System.out.println(oldName.renameTo(newName));//true
+        oldName.renameTo(newName);
+
+        Random r = new Random();
+        String s = "";
+        for (int i = 0; i < 5; i++) {
+            int a = r.nextInt(0,3);
+            switch (a){
+                case 0:
+                    s += (char)(r.nextInt(0,9)+48);
+                    break;
+                case 1:
+                    s += (char)(r.nextInt(0,24)+65);
+                    break;
+                case 2:
+                    s +=(char)(r.nextInt(0,24)+97);
+                    break;
+                default:
+                    break;
+            }
+        }
+        String picName = "1.jpg";
+        String newName1 = s+".jpg";
+        File file =new File("F://GithubRepo//AscensionAGV//src//main//webapp//img//" + newName1);
+        newName.renameTo(file);
+        return newName1;
+    }
+
+//    @RequestMapping(value = "/test2", method = RequestMethod.GET)
+//    @ResponseBody
+//    public ModelAndView test2() throws IOException {
+//            ModelAndView modelAndView = new ModelAndView();
+//            modelAndView.setViewName("1");
+//            return modelAndView;
+//    }
+
 
     User p = new User();
     Returning r = new Returning();

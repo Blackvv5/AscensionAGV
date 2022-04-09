@@ -15,9 +15,14 @@
     <!--配置内部资源视图解析器-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--  /jsp/success.jsp  -->
-        <property name="prefix" value="/jsp/"/>
-        <property name="suffix" value=".jsp"/>
+        <property name="prefix" value="/img/"></property>
+        <property name="suffix" value=".jpg"></property>
     </bean>
+
+    <mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
+
+    <mvc:default-servlet-handler/>
+
 
     <mvc:annotation-driven/>
 
