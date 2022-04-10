@@ -4,14 +4,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 
 /**
@@ -21,15 +26,11 @@ import java.util.Date;
 @ResponseBody
 public class UserController {
 
-    User p = new User();
-    Returning r = new Returning();
-    ArrayList<User> users = new ArrayList<>();
-
     @RequestMapping
     public String test2() throws IOException{
 
         return "success";
-    }
+        }
 
 
     @RequestMapping(value = "/test1", method = RequestMethod.GET)
@@ -42,8 +43,44 @@ public class UserController {
         }
         //System.out.println(oldName.renameTo(newName));//true
         oldName.renameTo(newName);
-        return "aa";
+
+        Random r = new Random();
+        String s = "";
+        for (int i = 0; i < 5; i++) {
+            int a = r.nextInt(0,3);
+            switch (a){
+                case 0:
+                    s += (char)(r.nextInt(0,9)+48);
+                    break;
+                case 1:
+                    s += (char)(r.nextInt(0,24)+65);
+                    break;
+                case 2:
+                    s +=(char)(r.nextInt(0,24)+97);
+                    break;
+                default:
+                    break;
+            }
+        }
+        String picName = "1.jpg";
+        String newName1 = s+".jpg";
+        File file =new File("F://GithubRepo//AscensionAGV//src//main//webapp//img//" + newName1);
+        newName.renameTo(file);
+        return newName1;
     }
+
+//    @RequestMapping(value = "/test2", method = RequestMethod.GET)
+//    @ResponseBody
+//    public ModelAndView test2() throws IOException {
+//            ModelAndView modelAndView = new ModelAndView();
+//            modelAndView.setViewName("1");
+//            return modelAndView;
+//    }
+
+
+    User p = new User();
+    Returning r = new Returning();
+    ArrayList<User> users = new ArrayList<>();
 
     /**
      * 发送最新无人车坐标
@@ -55,7 +92,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/coordinates", method = RequestMethod.GET)
     @ResponseBody
-    public Returning coordinatesAgv(int userid, double x, double y, String ip) throws IOException {
+    public Returning coordinatesAgv(int userid, double x, double y, int ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
@@ -92,7 +129,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/apartmentRendering", method = RequestMethod.GET)
     @ResponseBody
-    public Returning apartmentRenderingAgv(int userid, int imageEncoded, String ip) throws IOException {
+    public Returning apartmentRenderingAgv(int userid, int imageEncoded, int ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
@@ -126,7 +163,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/state", method = RequestMethod.GET)
     @ResponseBody
-    public Returning stateAgv(int userid, int state, String ip) throws IOException {
+    public Returning stateAgv(int userid, int state, int ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
@@ -163,7 +200,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/shot", method = RequestMethod.GET)
     @ResponseBody
-    public Returning shotAgv(int userid, int imageEncoded, String ip) throws IOException {
+    public Returning shotAgv(int userid, int imageEncoded, int ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
