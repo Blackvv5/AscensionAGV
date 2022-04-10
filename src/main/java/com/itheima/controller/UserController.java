@@ -35,7 +35,7 @@ public class UserController {
 
     @RequestMapping(value = "/test1", method = RequestMethod.GET)
     @ResponseBody
-    public String test1() throws IOException {
+    public void test1() throws IOException {
         File oldName = new File("F:\\GithubRepo\\AscensionAGV\\src\\main\\java\\com\\itheima\\controller\\1.jpg");
         File newName = new File("F:\\GithubRepo\\AscensionAGV\\src\\main\\webapp\\img\\1.jpg");
         if(newName.exists()){
@@ -43,30 +43,6 @@ public class UserController {
         }
         //System.out.println(oldName.renameTo(newName));//true
         oldName.renameTo(newName);
-
-        Random r = new Random();
-        String s = "";
-        for (int i = 0; i < 5; i++) {
-            int a = r.nextInt(0,3);
-            switch (a){
-                case 0:
-                    s += (char)(r.nextInt(0,9)+48);
-                    break;
-                case 1:
-                    s += (char)(r.nextInt(0,24)+65);
-                    break;
-                case 2:
-                    s +=(char)(r.nextInt(0,24)+97);
-                    break;
-                default:
-                    break;
-            }
-        }
-        String picName = "1.jpg";
-        String newName1 = s+".jpg";
-        File file =new File("F://GithubRepo//AscensionAGV//src//main//webapp//img//" + newName1);
-        newName.renameTo(file);
-        return newName1;
     }
 
 //    @RequestMapping(value = "/test2", method = RequestMethod.GET)
@@ -92,7 +68,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/coordinates", method = RequestMethod.GET)
     @ResponseBody
-    public Returning coordinatesAgv(int userid, double x, double y, int ip) throws IOException {
+    public Returning coordinatesAgv(int userid, double x, double y, String ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
@@ -129,7 +105,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/apartmentRendering", method = RequestMethod.GET)
     @ResponseBody
-    public Returning apartmentRenderingAgv(int userid, int imageEncoded, int ip) throws IOException {
+    public Returning apartmentRenderingAgv(int userid, int imageEncoded, String ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
@@ -163,7 +139,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/state", method = RequestMethod.GET)
     @ResponseBody
-    public Returning stateAgv(int userid, int state, int ip) throws IOException {
+    public Returning stateAgv(int userid, int state, String ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
@@ -200,7 +176,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/shot", method = RequestMethod.GET)
     @ResponseBody
-    public Returning shotAgv(int userid, int imageEncoded, int ip) throws IOException {
+    public Returning shotAgv(int userid, int imageEncoded, String ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
