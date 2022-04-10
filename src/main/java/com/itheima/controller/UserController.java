@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
 import java.io.IOException;
 
 import java.text.SimpleDateFormat;
@@ -17,12 +18,32 @@ import java.util.Date;
  * @author 10908
  */
 @Controller
-
+@ResponseBody
 public class UserController {
 
     User p = new User();
     Returning r = new Returning();
     ArrayList<User> users = new ArrayList<>();
+
+    @RequestMapping
+    public String test2() throws IOException{
+
+        return "success";
+    }
+
+
+    @RequestMapping(value = "/test1", method = RequestMethod.GET)
+    @ResponseBody
+    public String test1() throws IOException {
+        File oldName = new File("F:\\GithubRepo\\AscensionAGV\\src\\main\\java\\com\\itheima\\controller\\1.jpg");
+        File newName = new File("F:\\GithubRepo\\AscensionAGV\\src\\main\\webapp\\img\\1.jpg");
+        if(newName.exists()){
+            newName.delete();
+        }
+        //System.out.println(oldName.renameTo(newName));//true
+        oldName.renameTo(newName);
+        return "aa";
+    }
 
     /**
      * 发送最新无人车坐标
@@ -34,7 +55,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/coordinates", method = RequestMethod.GET)
     @ResponseBody
-    public Returning coordinatesAgv(int userid, double x, double y, int ip) throws IOException {
+    public Returning coordinatesAgv(int userid, double x, double y, String ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
@@ -71,7 +92,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/apartmentRendering", method = RequestMethod.GET)
     @ResponseBody
-    public Returning apartmentRenderingAgv(int userid, int imageEncoded, int ip) throws IOException {
+    public Returning apartmentRenderingAgv(int userid, int imageEncoded, String ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
@@ -105,7 +126,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/state", method = RequestMethod.GET)
     @ResponseBody
-    public Returning stateAgv(int userid, int state, int ip) throws IOException {
+    public Returning stateAgv(int userid, int state, String ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
@@ -142,7 +163,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/agv/shot", method = RequestMethod.GET)
     @ResponseBody
-    public Returning shotAgv(int userid, int imageEncoded, int ip) throws IOException {
+    public Returning shotAgv(int userid, int imageEncoded, String ip) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();

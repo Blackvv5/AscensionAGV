@@ -11,6 +11,17 @@
   <component name="ChangeListManager">
     <list default="true" id="69ead0dc-7c1f-4d9a-a75e-df64894db1b5" name="变更" comment="上传">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itheima/controller/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itheima/controller/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itheima/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itheima/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/itheima/controller/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/itheima/controller/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/itheima/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/itheima/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/itheima/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/itheima/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/itheima_spring_mvc-1.0-SNAPSHOT/WEB-INF/classes/spring-mvc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +55,9 @@
     <setting file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/itheima/controller/UserController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/itheima/controller/User.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/itheima/controller/UserController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -76,7 +87,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/img" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -84,7 +95,13 @@
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\GithubRepo\AscensionAGV\src\main\webapp\img" />
+      <recent name="F:\GithubRepo\AscensionAGV\src\main\java\com\itheima\controller" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 8.5.77" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.77" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
@@ -96,6 +113,11 @@
             <option name="CONTEXT_PATH" value="" />
           </settings>
         </artifact>
+        <file path="$PROJECT_DIR$/src/main/webapp/img">
+          <settings>
+            <option name="CONTEXT_PATH" value="/img" />
+          </settings>
+        </file>
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="4ec91fbc-a35b-4c98-ac81-7a244448cf07" />
@@ -206,6 +228,7 @@
       <workItem from="1648398420869" duration="36000" />
       <workItem from="1648398610752" duration="4445000" />
       <workItem from="1648444781442" duration="811000" />
+      <workItem from="1649559271577" duration="3336000" />
     </task>
     <task id="LOCAL-00001" summary="上传">
       <created>1648226597993</created>

@@ -5,11 +5,11 @@ package com.itheima.controller;
  */
 public class User {
 
-    public int getIp() {
+    public String getIp() {
         return ip;
     }
 
-    public void setIp(int ip) {
+    public void setIp(String ip) {
         this.ip = ip;
     }
 
@@ -61,7 +61,7 @@ public class User {
         this.fellImageEncoded = fellImageEncoded;
     }
 
-    private int ip;
+    private String ip;
     private double X;
     private double Y;
     private int id;

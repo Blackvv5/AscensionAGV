@@ -19,7 +19,8 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
     <mvc:annotation-driven/>
-
+    <mvc:default-servlet-handler/>
 
 </beans>
