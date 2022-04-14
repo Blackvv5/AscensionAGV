@@ -1,15 +1,15 @@
 package com.itheima.controller;
 
 public class fellMini1 {
-    public int getFellImageEncoded() {
-        return fellImageEncoded;
+    public String getimageFellUrl() {
+        return imageFellUrl;
     }
 
-    public void setFellImageEncoded(int fellImageEncoded) {
-        this.fellImageEncoded = fellImageEncoded;
+    public void setimageFellUrl(String fellImageEncoded) {
+        this.imageFellUrl = imageFellUrl;
     }
 
-    private int fellImageEncoded;
+    private String imageFellUrl;
 
     public String getTime() {
         return time;

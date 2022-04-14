@@ -1,15 +1,15 @@
 package com.itheima.controller;
 
 public class apartmentRenderingMini1 {
-    public int getHouseImageEncoded() {
-        return houseImageEncoded;
+    public String getsetimageUrld() {
+        return setimageUrl;
     }
 
-    public void setHouseImageEncoded(int houseImageEncoded) {
-        this.houseImageEncoded = houseImageEncoded;
+    public void setimageUrl(String setimageUrl) {
+        this.setimageUrl = setimageUrl;
     }
 
-    private int houseImageEncoded;
+    private String setimageUrl;
 
     public String getTime() {
         return time;

@@ -37,11 +37,11 @@ public class User {
         this.id = id;
     }
 
-    public int getHouseImageEncoded() {
+    public String getHouseImageEncoded() {
         return houseImageEncoded;
     }
 
-    public void setHouseImageEncoded(int houseImageEncoded) {
+    public void setHouseImageEncoded(String houseImageEncoded) {
         this.houseImageEncoded = houseImageEncoded;
     }
 
@@ -53,11 +53,11 @@ public class User {
         this.state = state;
     }
 
-    public int getFellImageEncoded() {
+    public String getFellImageEncoded() {
         return fellImageEncoded;
     }
 
-    public void setFellImageEncoded(int fellImageEncoded) {
+    public void setFellImageEncoded(String fellImageEncoded) {
         this.fellImageEncoded = fellImageEncoded;
     }
 
@@ -65,10 +65,19 @@ public class User {
     private double X;
     private double Y;
     private int id;
-    private int houseImageEncoded;
+    private String houseImageEncoded;
     private int state;
-    private int fellImageEncoded;
+    private String fellImageEncoded;
     private String locationTime;
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public String getLocationTime() {
         return locationTime;

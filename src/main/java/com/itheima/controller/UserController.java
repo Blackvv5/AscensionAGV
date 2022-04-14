@@ -1,22 +1,20 @@
 package com.itheima.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
+
+import java.io.BufferedReader;
+// import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Map;
 
 
 /**
@@ -25,13 +23,6 @@ import java.util.Random;
 @Controller
 @ResponseBody
 public class UserController {
-
-    @RequestMapping
-    public String test2() throws IOException{
-
-        return "success";
-        }
-
 
     @RequestMapping(value = "/test1", method = RequestMethod.GET)
     @ResponseBody
@@ -54,9 +45,17 @@ public class UserController {
 //    }
 
 
+
     User p = new User();
     Returning r = new Returning();
     ArrayList<User> users = new ArrayList<>();
+    String token = "asd";
+
+    @RequestMapping(value = "/test2", method = RequestMethod.GET)
+    @ResponseBody
+    public String test2() throws IOException {
+        return token;
+    }
 
     /**
      * 发送最新无人车坐标
@@ -97,20 +96,22 @@ public class UserController {
     /**
      * 发送编码后的户型图字符串
      *
-     * @param userid       老人的编号
-     * @param imageEncoded 户型图字符串
-     * @param ip           无人车ip地址
+
      * @return 待定
      * @throws IOException 抛出异常
      */
-    @RequestMapping(value = "/api/agv/apartmentRendering", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/agv/apartmentRendering", method = RequestMethod.POST)
     @ResponseBody
-    public Returning apartmentRenderingAgv(int userid, int imageEncoded, String ip) throws IOException {
+    public Returning apartmentRenderingAgv(@RequestBody Map<String, Object> map) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         String dateStringParse = sdf.format(date);
+
+        int userid = (int)map.get("userid");
+        String imageEncoded = (String)map.get("imageEncoded");
+        String ip = (String)map.get("ip");
 
         User pp;
         for (int i = 0; i < users.size(); i++) {
@@ -146,6 +147,7 @@ public class UserController {
         Date date = calendar.getTime();
         String dateStringParse = sdf.format(date);
 
+        String s="";
 
         User pp;
         for (int i = 0; i < users.size(); i++) {
@@ -154,6 +156,12 @@ public class UserController {
                 pp.setState(state);
                 pp.setIp(ip);
                 pp.setStateTime(dateStringParse);
+
+                if(state==2){
+                    get_Token(s);
+                    pp.setToken(token);
+                }
+
                 users.set(i, pp);
                 r.setState("ok.");
                 r.setMassage("received");
@@ -168,26 +176,32 @@ public class UserController {
     /**
      * 发送编码后的老人照片字符串
      *
-     * @param userid       老人的编号
-     * @param imageEncoded 照片编码后
-     * @param ip           无人车的ip地址
+
      * @return 待定
      * @throws IOException 抛出异常
      */
-    @RequestMapping(value = "/api/agv/shot", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/agv/shot", method = RequestMethod.POST)
     @ResponseBody
-    public Returning shotAgv(int userid, int imageEncoded, String ip) throws IOException {
+    public Returning shotAgv(@RequestBody Map<String, Object> map) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //1、日期转字符串
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         String dateStringParse = sdf.format(date);
 
+        int userid = (int)map.get("userid");
+        String imageEncoded = (String)map.get("imageEncoded");
+        String ip = (String)map.get("ip");
+
+
+        //这里解码
+        String imageDecoded = picdecode(imageEncoded);
+
         User pp;
         for (int i = 0; i < users.size(); i++) {
             pp = users.get(i);
             if (pp.getId() == userid) {
-                pp.setFellImageEncoded(imageEncoded);
+                pp.setFellImageEncoded(imageDecoded);
                 pp.setIp(ip);
                 pp.setShotTime(dateStringParse);
                 users.set(i, pp);
@@ -241,7 +255,7 @@ public class UserController {
         for (int i = 0; i < users.size(); i++) {
             pp = users.get(i);
             if (pp.getId() == userid) {
-                x.setHouseImageEncoded(pp.getHouseImageEncoded());
+                x.setimageUrl("/img/map.png");
                 x.setTime(pp.getHouseImageTime());
                 return x;
             }
@@ -264,7 +278,7 @@ public class UserController {
         for (int i = 0; i < users.size(); i++) {
             pp = users.get(i);
             if (pp.getId() == userid) {
-                x.setFellImageEncoded(pp.getFellImageEncoded());
+                x.setimageFellUrl("/img/shot.png");
                 x.setTime(pp.getShotTime());
                 return x;
             }
@@ -293,5 +307,45 @@ public class UserController {
             }
         }
         return x;
+    }
+
+
+    /**
+     * 获取变化的 access_token
+     * @throws IOException
+     */
+    @PostMapping(value = "https:/api.weixin.qq.com/cgi-bin/token? grant_type=client_credential&appid=wx4872d0a989dff417&secret=e820823d842546ec479ac02ecbbccf83")
+    @ResponseBody
+    public void get_Token(@RequestBody String access_token) throws IOException {
+        System.out.println(access_token);
+        token = access_token;
+        System.out.println(token);
+    }
+
+
+
+    public static String picdecode(String PicBefore) {
+
+        Process proc;
+        String res = null;
+        try {
+            proc = Runtime.getRuntime().exec("python D:\\demo1.py");// 执行py文件
+            //用输入输出流来截取结果
+            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line = null;
+            res = null;
+            while ((line = in.readLine()) != null) {
+                // System.out.println(line);//打印输出结果
+                res = res + line;
+            }
+            in.close();
+            proc.waitFor();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return res;
     }
 }
